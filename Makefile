@@ -10,7 +10,7 @@ CC= g++
 
 # RM= /bin/rm -f
 
-all: marvelcharacters
+#all: marvelcharacters
 
 MarvelCharLookup.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o MarvelCharLookup MarvelCharLookup.cpp
