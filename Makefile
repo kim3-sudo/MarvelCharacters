@@ -12,6 +12,9 @@ CC= g++
 
 all: marvelcharacters
 
+MarvelCharLookup.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
+	g++ -o MarvelCharLookup MarvelCharLookup.cpp
+	
 CharacterNameMap.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o CharacterNameMap CharacterNameMap.cpp
 	
@@ -23,9 +26,6 @@ CharacterYearMap.o: includes.h CharacterNameMap.cpp CharacterNameMap.h Character
 	
 UserOutput.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o UserOutput UserOutput.cpp
-	
-MarvelCharLookup.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
-	g++ -o MarvelCharLookup MarvelCharLookup.cpp
-	
+
 clean:
 	rm -f *.o marvelcharacters
