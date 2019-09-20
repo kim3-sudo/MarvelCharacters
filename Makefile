@@ -10,19 +10,24 @@ CC= g++
 
 # RM= /bin/rm -f
 	
-CharacterNameMap: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
+CharacterNameMap: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h\
+CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o -c CharacterNameMap CharacterNameMap.cpp
 	
-CharacterProfile: includes.h CharacterProfile.cpp CharacterProfile.h CharacterNameMap.cpp CharacterNameMap.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
+CharacterProfile: includes.h CharacterProfile.cpp CharacterProfile.h CharacterNameMap.cpp CharacterNameMap.h\
+CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o -c CharacterProfile CharacterProfile.cpp
 	
-CharacterYearMap: includes.h CharacterYearMap.cpp CharacterYearMap.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h UserOutput.cpp UserOutput.h
+CharacterYearMap: includes.h CharacterYearMap.cpp CharacterYearMap.h CharacterNameMap.cpp CharacterNameMap.h\
+CharacterProfile.cpp CharacterProfile.h UserOutput.cpp UserOutput.h
 	g++ -o -c CharacterYearMap CharacterYearMap.cpp
 	
-UserOutput: includes.h UserOutput.cpp UserOutput.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h
+UserOutput: includes.h UserOutput.cpp UserOutput.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp\
+CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h
 	g++ -o -c UserOutput UserOutput.cpp
 	
-MarvelCharLookup: includes.h MarvelCharLookup.cpp CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
+MarvelCharLookup: includes.h MarvelCharLookup.cpp CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp\
+CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o -c MarvelCharLookup MarvelCharLookup.cpp
 
 clean:
