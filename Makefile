@@ -1,29 +1,32 @@
 # MakeFile to build the MarvelCharacters search program
 # Kenyon College SCMP 318
 # C++ compiler
-CC= g++
+OBJS	= main.o charChar.o charNameMap.o charYearMap.o userOut.o
+SOURCE	= main.cpp charChar.cpp charNameMap.cpp charYearMap.cpp userOut.cpp
+HEADER	= charChar.h charNameMap.h charYearMap.h includes.h userOut.h
+OUT	= main
+CC	 = g++
+FLAGS	 = -g -c -Wall
+LFLAGS	 = 
 
-# For optimization
-# CFLAGS= -O2
-# For debugging
-# CFLAGS= -std=c+11
+all: $(OBJS)
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
-# RM= /bin/rm -f
-	
-charChar: charChar.cpp charChar.h
-	g++ -o charChar charChar.cpp
+main.o: main.cpp
+	$(CC) $(FLAGS) main.cpp -std=c++11
 
-charNameMap: includes.h charNameMap.cpp charNameMap.h
-	g++ -o charNameMap charNameMap.cpp
-	
-charYearMap: includes.h charYearMap.cpp charYearMap.h
-	g++ -o charYearMap charYearMap.cpp
-	
-userOut: userOut.cpp userOut.h
-	g++ -o userOut userOut.cpp
-	
-main: includes.h main.cpp userOut.h charChar.h charNameMap.h charYearMap.h
-	g++ -o main main.cpp
-	
+charChar.o: charChar.cpp
+	$(CC) $(FLAGS) charChar.cpp -std=c++11
+
+charNameMap.o: charNameMap.cpp
+	$(CC) $(FLAGS) charNameMap.cpp -std=c++11
+
+charYearMap.o: charYearMap.cpp
+	$(CC) $(FLAGS) charYearMap.cpp -std=c++11
+
+userOut.o: userOut.cpp
+	$(CC) $(FLAGS) userOut.cpp -std=c++11
+
+
 clean:
 	rm -f *.o main
