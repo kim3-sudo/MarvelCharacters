@@ -10,25 +10,20 @@ CC= g++
 
 # RM= /bin/rm -f
 	
-CharacterNameMap: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h\
-CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
-	g++ -o CharacterNameMap CharacterNameMap.cpp
-	
-CharacterProfile: includes.h CharacterProfile.cpp CharacterProfile.h CharacterNameMap.cpp CharacterNameMap.h\
-CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
-	g++ -o CharacterProfile CharacterProfile.cpp
-	
-CharacterYearMap: includes.h CharacterYearMap.cpp CharacterYearMap.h CharacterNameMap.cpp CharacterNameMap.h\
-CharacterProfile.cpp CharacterProfile.h UserOutput.cpp UserOutput.h
-	g++ -o CharacterYearMap CharacterYearMap.cpp
-	
-UserOutput: includes.h UserOutput.cpp UserOutput.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp\
-CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h
-	g++ -o UserOutput UserOutput.cpp
-	
-MarvelCharLookup: includes.h MarvelCharLookup.cpp CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp\
-CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
-	g++ -o MarvelCharLookup MarvelCharLookup.cpp
+charChar: charChar.cpp charChar.h
+	g++ -o charChar charChar.cpp
 
+charNameMap: includes.h charNameMap.cpp charNameMap.h
+	g++ -o charNameMap charNameMap.cpp
+	
+charYearMap: includes.h charYearMap.cpp charYearMap.h
+	g++ -o charYearMap charYearMap.cpp
+	
+userOut: userOut.cpp userOut.h
+	g++ -o userOut userOut.cpp
+	
+main: includes.h main.cpp userOut.h charChar.h charNameMap.h charYearMap.h
+	g++ -o main main.cpp
+	
 clean:
-	rm -f *.o marvelcharacters
+	rm -f *.o main
