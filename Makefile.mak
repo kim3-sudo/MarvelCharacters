@@ -6,25 +6,25 @@ CC= g++
 # For optimization
 # CFLAGS= -O2
 # For debugging
-CFLAGS= -std=c+11
+# CFLAGS= -std=c+11
 
-RM= /bin/rm -f
+# RM= /bin/rm -f
 
 all: marvelcharacters
 
-CharacterNameMap.o: CharacterNameMap.cpp CharacterNameEntry.h includes.h
+CharacterNameMap.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o CharacterNameMap CharacterNameMap.cpp
 	
-CharacterProfile.o: CharacterProfile.cpp CharacterProfile.h includes.h
+CharacterProfile.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o CharacterProfile CharacterProfile.cpp
 	
-CharacterYearMap.o: CharacterYearMap.cpp CharacterYearMap.h includes.h CharacterProfile.h
+CharacterYearMap.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o CharacterYearMap CharacterYearMap.cpp
 	
-UserOutput.o: UserOutput.cpp UserOutput.h CharacterProfile.h includes.h
+UserOutput.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o UserOutput UserOutput.cpp
 	
-MarvelCharLookup.o: MarvelCharLookup.cpp UserOutput.h CharacterNameMap.h CharacterProfile.h includes.h
+MarvelCharLookup.o: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
 	g++ -o MarvelCharLookup MarvelCharLookup.cpp
 	
 clean:
