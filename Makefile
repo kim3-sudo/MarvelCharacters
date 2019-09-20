@@ -12,23 +12,23 @@ CC= g++
 	
 CharacterNameMap: includes.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp CharacterProfile.h\
 CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
-	g++ -o -c CharacterNameMap CharacterNameMap.cpp
+	g++ -o CharacterNameMap CharacterNameMap.cpp
 	
 CharacterProfile: includes.h CharacterProfile.cpp CharacterProfile.h CharacterNameMap.cpp CharacterNameMap.h\
 CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
-	g++ -o -c CharacterProfile CharacterProfile.cpp
+	g++ -o CharacterProfile CharacterProfile.cpp
 	
 CharacterYearMap: includes.h CharacterYearMap.cpp CharacterYearMap.h CharacterNameMap.cpp CharacterNameMap.h\
 CharacterProfile.cpp CharacterProfile.h UserOutput.cpp UserOutput.h
-	g++ -o -c CharacterYearMap CharacterYearMap.cpp
+	g++ -o CharacterYearMap CharacterYearMap.cpp
 	
 UserOutput: includes.h UserOutput.cpp UserOutput.h CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp\
 CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h
-	g++ -o -c UserOutput UserOutput.cpp
+	g++ -o UserOutput UserOutput.cpp
 	
 MarvelCharLookup: includes.h MarvelCharLookup.cpp CharacterNameMap.cpp CharacterNameMap.h CharacterProfile.cpp\
 CharacterProfile.h CharacterYearMap.cpp CharacterYearMap.h UserOutput.cpp UserOutput.h
-	g++ -o -c MarvelCharLookup MarvelCharLookup.cpp
+	g++ -o MarvelCharLookup MarvelCharLookup.cpp
 
 clean:
 	rm -f *.o marvelcharacters
