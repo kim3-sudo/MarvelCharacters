@@ -8,6 +8,7 @@ OUT	= main
 CC	 = g++
 FLAGS	 = -g -c -Wall
 LFLAGS	 = 
+CFLAGS	= -std=c++14
 
 all: $(OBJS)
 	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
