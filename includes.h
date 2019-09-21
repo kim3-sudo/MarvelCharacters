@@ -20,5 +20,3 @@ using std::vector;
 using std::map;
 using std::fstream;
 using std::istringstream;
-
-using std::out_of_range;
