@@ -1,5 +1,8 @@
 # MakeFile to build the MarvelCharacters search program
 # Kenyon College SCMP 318
+
+USER= kim3
+
 # C++ compiler
 OBJS	= main.o charChar.o charNameMap.o charYearMap.o userOut.o
 SOURCE	= main.cpp charChar.cpp charNameMap.cpp charYearMap.cpp userOut.cpp
@@ -27,7 +30,21 @@ charYearMap.o: charYearMap.cpp
 
 userOut.o: userOut.cpp
 	$(CC) $(FLAGS) userOut.cpp -std=c++11
+	
+PutCGI: namelookup
+	chmod 757 marvel
+	cp marvel /usr/lib/cgi-bin/$(USER)_marvel.cgi 
 
+	echo "Current contents of your cgi-bin directory: "
+	ls -l /usr/lib/cgi-bin/
+
+PutHTML:
+	cp marvel.html /var/www/html/class/softdev/$(USER)/Names/
+	cp style.css /var/www/html/class/softdev/$(USER)/Names/
+	cp script.js /var/www/html/class/softdev/$(USER)/Names/
+
+	echo "Current contents of your HTML directory: "
+	ls -l /var/www/html/class/softdev/$(USER)/Names/
 
 clean:
 	rm -f *.o main
