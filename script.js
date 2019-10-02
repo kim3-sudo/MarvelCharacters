@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 // Build output table from comma delimited list
 function nameTable(list) {
-    var result = '<table class="w3-table-all w3-hoverable" border="2"><tr><th>Name</th><th>%</th><th>Rank</th><tr>';
+    var result = '<table class="w3-table-all w3-hoverable" border="2"><tr><th>Name (Planet)</th><th>%</th><th>Identity</th><tr>%</th><th>Alignment</th><tr>%</th><th>Eyes</th><tr>%</th><th>Hair</th><tr>%</th><th>Gender Identity</th><tr>%</th><th>Life</th><tr>%</th><th>Appearances</th><tr>';
     var a = list.split(",");
     var aLen = a.length;
     for (var i = 0; i < aLen; i+=3) {
