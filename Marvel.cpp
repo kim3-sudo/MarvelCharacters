@@ -10,15 +10,10 @@
  *     
  *
  ***************************************************************************/
-#include <sys/stat.h>
-#include <iostream>
-#include <fstream>
-#include <map>
-#include <algorithm>
+#include "includes.h"
 #include "CharacterProfile.h"
 #include "CharacterNameMap.h"
 #include "CharacterYearMap.h"
-#include <string>
 
 // Stuff for AJAX
 #include "cgicc/Cgicc.h"
