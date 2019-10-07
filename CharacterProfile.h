@@ -3,10 +3,7 @@ CharacterProfile.h - Object to store a data on a
 character in the Marvel Character Database
 ******************************************************/
 
-#include<string>
-#include<iostream>
-#include<fstream>
-#include<sstream>
+#include "includes.h"
 #ifndef CHARACTERPROFILE_H
 #define CHARACTERPROFILE_H
 
