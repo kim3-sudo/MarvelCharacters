@@ -33,7 +33,7 @@ CharacterYearMap.o: CharacterYearMap.cpp CharacterYearMap.h
 	$(CC) $(CFLAGS) CharacterYearMap.cpp -c
 
 Marvel.o: Marvel.cpp fifo.h CharacterNameMap.h CharacterYearMap.h CharacterProfile.h
-	$(CC) $(CFLAGS) main.cpp -c
+	$(CC) $(CFLAGS) Marvel.cpp -c
 
 namelookupclient.o: namelookupclient.cpp fifo.h
 	$(CC) $(CFLAGS) namelookupclient.cpp -c
@@ -43,8 +43,8 @@ namelookupclient.o: namelookupclient.cpp fifo.h
 testclient: testclient.o fifo.o
 	$(CC) testclient.o fifo.o -o testclient
 
-characterserver: main.o fifo.o CharacterProfile.o CharacterNameMap.o CharacterYearMap.o
-	$(CC) main.o CharacterProfile.o CharacterNameMap.o CharacterYearMap.o fifo.o -o characterserver
+characterserver: Marvel.o fifo.o CharacterProfile.o CharacterNameMap.o CharacterYearMap.o
+	$(CC) Marvel.o CharacterProfile.o CharacterNameMap.o CharacterYearMap.o fifo.o -o characterserver
 
 namelookupclient: namelookupclient.o  fifo.h
 	$(CC) namelookupclient.o  fifo.o -o namelookupclient -L/usr/local/lib -lcgicc
