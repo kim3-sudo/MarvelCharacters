@@ -32,7 +32,7 @@ CharacterNameMap.o: CharacterNameMap.cpp CharacterNameMap.h
 CharacterYearMap.o: CharacterYearMap.cpp CharacterYearMap.h
 	$(CC) $(CFLAGS) CharacterYearMap.cpp -c
 
-main.o: main.cpp fifo.h CharacterNameMap.h CharacterYearMap.h CharacterProfile.h
+Marvel.o: Marvel.cpp fifo.h CharacterNameMap.h CharacterYearMap.h CharacterProfile.h
 	$(CC) $(CFLAGS) main.cpp -c
 
 namelookupclient.o: namelookupclient.cpp fifo.h
