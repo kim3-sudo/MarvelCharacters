@@ -13,36 +13,58 @@ CFLAGS= -std=c++14
 
 RM= /bin/rm -f
 
-all: character_lookup PutCGI PutHTML
+all: characterserver testclient namelookupclient PutCGI PutHTML
+
+#Compiles Files
+
+fifo.o:	fifo.cpp fifo.h
+	$(CC) fifo.cpp -c
+
+testclient.o: testclient.cpp fifo.h
+	$(CC) $(CFLAGS) testclient.cpp -c
 
 CharacterProfile.o: CharacterProfile.cpp CharacterProfile.h
 	$(CC) $(CFLAGS) CharacterProfile.cpp -c
 
 CharacterNameMap.o: CharacterNameMap.cpp CharacterNameMap.h
 	$(CC) $(CFLAGS) CharacterNameMap.cpp -c
-
+	
 CharacterYearMap.o: CharacterYearMap.cpp CharacterYearMap.h
 	$(CC) $(CFLAGS) CharacterYearMap.cpp -c
 
-Marvel.o: Marvel.cpp CharacterNameMap.h CharacterYearMap.h CharacterProfile.h
-	$(CC) $(CFLAGS) Marvel.cpp -c
+main.o: main.cpp fifo.h CharacterNameMap.h CharacterYearMap.h CharacterProfile.h
+	$(CC) $(CFLAGS) main.cpp -c
 
-character_lookup: Marvel.o CharacterNameMap.o CharacterYearMap.o CharacterProfile.o
-	$(CC) Marvel.o -o character_lookup CharacterNameMap.o CharacterYearMap.o CharacterProfile.o -L/usr/local/lib -lcgicc
+namelookupclient.o: namelookupclient.cpp fifo.h
+	$(CC) $(CFLAGS) namelookupclient.cpp -c
 
-PutCGI: character_lookup
-	chmod 757 character_lookup
-	cp character_lookup /usr/lib/cgi-bin/$(USER)_character_lookup.cgi 
+#Links Files
+
+testclient: testclient.o fifo.o
+	$(CC) testclient.o fifo.o -o testclient
+
+characterserver: main.o fifo.o CharacterProfile.o CharacterNameMap.o CharacterYearMap.o
+	$(CC) main.o CharacterProfile.o CharacterNameMap.o CharacterYearMap.o fifo.o -o characterserver
+
+namelookupclient: namelookupclient.o  fifo.h
+	$(CC) namelookupclient.o  fifo.o -o namelookupclient -L/usr/local/lib -lcgicc
+
+#Puts files into directories
+
+PutCGI: namelookupclient
+	chmod 757 namelookupclient
+	cp namelookupclient /usr/lib/cgi-bin/$(USER)_namelookupclient.cgi 
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
 
 PutHTML:
-	cp namelookup.html /var/www/html/class/softdev/kim3/Names/
-	cp namelookup.css /var/www/html/class/softdev/kim3/Names/
-	cp namelookup.js /var/www/html/class/softdev/kim3/Names/
+	cp namelookupCS.html /var/www/html/class/softdev/$(USER)/Names/
+	cp namelookupCS.css /var/www/html/class/softdev/$(USER)/Names/
+	cp namelookupCS.js /var/www/html/class/softdev/$(USER)/Names/
 
 	echo "Current contents of your HTML directory: "
 	ls -l /var/www/html/class/softdev/$(USER)/Names/
+
 clean:
-	rm -f *.o  character_lookup
+	rm -f *.o namelookupclient nameserver testclient
